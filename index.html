@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // function to get random rock, paper, scissors from the computer
+    function getComputerChoice() {
+        let number = Math.floor(Math.random() * 3);
+        if (number == 0) {
+            return 'ROCK';
+        } else if (number == 1) {
+            return 'PAPER';
+        } else if (number == 2) {
+            return 'SCISSORS';
+        }
+    }
+
+    // the game get user input, play 5 round against random computer input and check the winner ar the end
+    function game() {
+        let player_win = 0;
+        let computer_win = 0;
+
+        for (let i = 0; i < 5; i++) {
+            let user_input = prompt("Please enter your input").toUpperCase();
+            let computer_input = getComputerChoice();
+            console.log('user: ' + user_input);
+            console.log('computer: ' + computer_input);
+            if (user_input === computer_input) {
+                console.log('Tie');
+                i--;
+                // tie doesnt count as a round so we can play again
+            } else if (user_input === 'ROCK' && computer_input === 'PAPER') {
+                console.log('You Lose!');
+                computer_win++;
+            } else if (user_input === 'ROCK' && computer_input === 'SCISSORS') {
+                console.log('You Win!');
+                player_win++;
+            } else if (user_input === 'PAPER' && computer_input === 'SCISSORS') {
+                console.log('You LOSE!');
+                computer_win++;
+            } else if (user_input === 'PAPER' && computer_input === 'ROCK') {
+                console.log('You Win!');
+                player_win++;
+            } else if (user_input === 'SCISSORS' && computer_input === 'ROCK') {
+                console.log('You LOSE!');
+                computer_win++;
+            } else if (user_input === 'SCISSORS' && computer_input === 'PAPER') {
+                console.log('You Win!');
+                player_win++;
+            }
+        }
+        console.log('Player win: ' + player_win);
+        console.log('Computer Win: ' + computer_win);
+        if (player_win > computer_win) {
+            console.log('You win!');
+        } else {
+            console.log('You lose!');
+        }
+    }
+    
+    game();
+</script>
+</body>
+</html>
